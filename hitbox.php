@@ -29,11 +29,11 @@ if ($query->num_rows > 0)
 {
 	while($row = $query->fetch_assoc())
 	{
-		$hits_one_pct											=	$row['hits'] / 100;
-		$plr_accuracy											=	round($row['accuracy'], 0) . '%';
+		$hits_one_pct							=	$row['hits'] / 100;
+		$plr_accuracy							=	round($row['accuracy'], 0);
 		if ($row['shot_head']		!= 0) $plr_shot_head		=	round(($row['shot_head']		/ $hits_one_pct), 0);
-		if ($row['shot_rightarm']	!= 0) $plr_shot_rightarm	=	round(($row['shot_rightarm']	/ $hits_one_pct), 0);
-		if ($row['shot_rightleg']	!= 0) $plr_shot_rightleg	=	round(($row['shot_rightleg']	/ $hits_one_pct), 0);
+		if ($row['shot_rightarm']	!= 0) $plr_shot_rightarm	=	round(($row['shot_rightarm']		/ $hits_one_pct), 0);
+		if ($row['shot_rightleg']	!= 0) $plr_shot_rightleg	=	round(($row['shot_rightleg']		/ $hits_one_pct), 0);
 		if ($row['shot_chest']		!= 0) $plr_shot_chest		=	round(($row['shot_chest']		/ $hits_one_pct), 0);
 		if ($row['shot_leftarm']	!= 0) $plr_shot_leftarm		=	round(($row['shot_leftarm']		/ $hits_one_pct), 0);
 		if ($row['shot_stomach']	!= 0) $plr_shot_stomach		=	round(($row['shot_stomach']		/ $hits_one_pct), 0);
@@ -143,12 +143,11 @@ $hitbox .=<<<FOOTER
 	<p style="margin-left: 460px; margin-top: 480px; font-size: 25px;">Left Leg</p>
 	<p style="margin-left: 460px; margin-top: 515px; font-size: 18px;">{$plr_shot_leftleg}%</p>
 <!--ACCURACY-->
-	<p style="margin-left: 80px; margin-top: 603px; font-size: 20px;">{$plr_accuracy}</p>
+	<p style="margin-left: 80px; margin-top: 603px; font-size: 20px;">{$plr_accuracy}%</p>
 </div>
 </body>
 </html>
 FOOTER . PHP_EOL;
 
 echo $hitbox;
-
 ?>
