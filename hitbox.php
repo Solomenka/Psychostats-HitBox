@@ -13,10 +13,10 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$query  = $conn->query('SELECT * FROM ' . $dbtblprefix . '`c_plr_weapons` WHERE `plrid` = ' . $playerid . ' AND `weaponid` = ' . $weaponid);
+$query  = $conn->query('SELECT * FROM `' . $dbtblprefix . 'c_plr_weapons` WHERE `plrid` = ' . $playerid . ' AND `weaponid` = ' . $weaponid);
 
 $plr_accuracy		=	0;
-$plr_shots		=	0;
+$plr_shots			=	0;
 $plr_shot_head		=	0;
 $plr_shot_rightarm	=	0;
 $plr_shot_rightleg	=	0;
@@ -29,15 +29,15 @@ if ($query->num_rows > 0)
 {
 	while($row = $query->fetch_assoc())
 	{
-		$hits_one_pct							=	$row['hits'] / 100;
-		$plr_accuracy							=	round($row['accuracy'], 0);
-		if ($row['shot_head']		!= 0) $plr_shot_head		=	round(($row['shot_head']	/ $hits_one_pct), 0);
+		$hits_one_pct											=	$row['hits'] / 100;
+		$plr_accuracy											=	round($row['accuracy'], 0);
+		if ($row['shot_head']		!= 0) $plr_shot_head		=	round(($row['shot_head']		/ $hits_one_pct), 0);
 		if ($row['shot_rightarm']	!= 0) $plr_shot_rightarm	=	round(($row['shot_rightarm']	/ $hits_one_pct), 0);
 		if ($row['shot_rightleg']	!= 0) $plr_shot_rightleg	=	round(($row['shot_rightleg']	/ $hits_one_pct), 0);
-		if ($row['shot_chest']		!= 0) $plr_shot_chest		=	round(($row['shot_chest']	/ $hits_one_pct), 0);
-		if ($row['shot_leftarm']	!= 0) $plr_shot_leftarm		=	round(($row['shot_leftarm']	/ $hits_one_pct), 0);
-		if ($row['shot_stomach']	!= 0) $plr_shot_stomach		=	round(($row['shot_stomach']	/ $hits_one_pct), 0);
-		if ($row['shot_leftleg']	!= 0) $plr_shot_leftleg		=	round(($row['shot_leftleg']	/ $hits_one_pct), 0);
+		if ($row['shot_chest']		!= 0) $plr_shot_chest		=	round(($row['shot_chest']		/ $hits_one_pct), 0);
+		if ($row['shot_leftarm']	!= 0) $plr_shot_leftarm		=	round(($row['shot_leftarm']		/ $hits_one_pct), 0);
+		if ($row['shot_stomach']	!= 0) $plr_shot_stomach		=	round(($row['shot_stomach']		/ $hits_one_pct), 0);
+		if ($row['shot_leftleg']	!= 0) $plr_shot_leftleg		=	round(($row['shot_leftleg']		/ $hits_one_pct), 0);
 	}
 }
 mysqli_free_result($query);
